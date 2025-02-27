@@ -1,0 +1,269 @@
+<html>
+<head>
+    <title>Recent Sales</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const entriesPerPageSelect = document.getElementById('entriesPerPage');
+            const tableBody = document.getElementById('tableBody');
+            const rows = Array.from(tableBody.getElementsByTagName('tr'));
+
+            function updateTable() {
+                const entriesPerPage = parseInt(entriesPerPageSelect.value, 10);
+                rows.forEach((row, index) => {
+                    row.style.display = index < entriesPerPage ? '' : 'none';
+                });
+            }
+
+            entriesPerPageSelect.addEventListener('change', updateTable);
+            updateTable();
+        });
+    </script>
+</head>
+<body class="bg-gray-100 p-4">
+    <div class="bg-white p-6 rounded-lg shadow-md">
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-xl font-semibold text-blue-600">Recent Sales <span class="text-gray-500">| Today</span></h2>
+            <div class="flex items-center space-x-4">
+                <div class="flex items-center border rounded-lg px-2 py-1">
+                    <select id="entriesPerPage" class="border-none focus:ring-0">
+                        <option value="5">5</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                    </select>
+                    <span class="ml-2 text-gray-600">entries per page</span>
+                </div>
+                <input type="text" placeholder="Search..." class="border rounded-lg px-4 py-2 focus:ring-2 focus:ring-blue-500">
+            </div>
+        </div>
+        <table class="min-w-full bg-white">
+            <thead>
+                <tr>
+                    <th class="py-2 px-4 border-b text-left text-gray-600">#</th>
+                    <th class="py-2 px-4 border-b text-left text-gray-600">Customer</th>
+                    <th class="py-2 px-4 border-b text-left text-gray-600">Product</th>
+                    <th class="py-2 px-4 border-b text-left text-gray-600">Price</th>
+                    <th class="py-2 px-4 border-b text-left text-gray-600">Status</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#457</td>
+                    <td class="py-2 px-4 border-b">Brandon Jacob</td>
+                    <td class="py-2 px-4 border-b text-blue-600">At praesentium minu</td>
+                    <td class="py-2 px-4 border-b">$64</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2147</td>
+                    <td class="py-2 px-4 border-b">Bridie Kessler</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Blanditiis dolor omnis similique</td>
+                    <td class="py-2 px-4 border-b">$47</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2049</td>
+                    <td class="py-2 px-4 border-b">Ashleigh Langosh</td>
+                    <td class="py-2 px-4 border-b text-blue-600">At recusandae consectetur</td>
+                    <td class="py-2 px-4 border-b">$147</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2644</td>
+                    <td class="py-2 px-4 border-b">Angus Grady</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Ut voluptatem id earum et</td>
+                    <td class="py-2 px-4 border-b">$67</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Rejected</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2644</td>
+                    <td class="py-2 px-4 border-b">Raheem Lehner</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Sunt similique distinctio</td>
+                    <td class="py-2 px-4 border-b">$165</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <!-- Additional 20 rows -->
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2645</td>
+                    <td class="py-2 px-4 border-b">John Doe</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Lorem ipsum dolor</td>
+                    <td class="py-2 px-4 border-b">$120</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2646</td>
+                    <td class="py-2 px-4 border-b">Jane Smith</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Sed ut perspiciatis</td>
+                    <td class="py-2 px-4 border-b">$89</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2647</td>
+                    <td class="py-2 px-4 border-b">Michael Brown</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Nemo enim ipsam</td>
+                    <td class="py-2 px-4 border-b">$75</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Rejected</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2648</td>
+                    <td class="py-2 px-4 border-b">Emily Davis</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Quis autem vel</td>
+                    <td class="py-2 px-4 border-b">$130</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2649</td>
+                    <td class="py-2 px-4 border-b">David Wilson</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Ut enim ad minima</td>
+                    <td class="py-2 px-4 border-b">$95</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2650</td>
+                    <td class="py-2 px-4 border-b">Sophia Martinez</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Excepteur sint occaecat</td>
+                    <td class="py-2 px-4 border-b">$110</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2651</td>
+                    <td class="py-2 px-4 border-b">James Anderson</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Duis aute irure dolor</td>
+                    <td class="py-2 px-4 border-b">$140</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Rejected</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2652</td>
+                    <td class="py-2 px-4 border-b">Olivia Thomas</td>
+                    <td class="py-2 px-4 border-b text-blue-600">In reprehenderit in</td>
+                    <td class="py-2 px-4 border-b">$105</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2653</td>
+                    <td class="py-2 px-4 border-b">Isabella Taylor</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Voluptate velit esse</td>
+                    <td class="py-2 px-4 border-b">$115</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2654</td>
+                    <td class="py-2 px-4 border-b">Liam Harris</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Cillum dolore eu</td>
+                    <td class="py-2 px-4 border-b">$125</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2655</td>
+                    <td class="py-2 px-4 border-b">Mason Clark</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Fugiat nulla pariatur</td>
+                    <td class="py-2 px-4 border-b">$135</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Rejected</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2656</td>
+                    <td class="py-2 px-4 border-b">Ava Lewis</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Excepteur sint occaecat</td>
+                    <td class="py-2 px-4 border-b">$150</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2657</td>
+                    <td class="py-2 px-4 border-b">Lucas Walker</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Cupidatat non proident</td>
+                    <td class="py-2 px-4 border-b">$160</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2658</td>
+                    <td class="py-2 px-4 border-b">Charlotte Young</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Sunt in culpa qui</td>
+                    <td class="py-2 px-4 border-b">$170</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2659</td>
+                    <td class="py-2 px-4 border-b">Amelia King</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Officia deserunt mollit</td>
+                    <td class="py-2 px-4 border-b">$180</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-red-100 text-red-800 text-xs font-semibold px-2.5 py-0.5 rounded">Rejected</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2660</td>
+                    <td class="py-2 px-4 border-b">Ethan Wright</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Anim id est laborum</td>
+                    <td class="py-2 px-4 border-b">$190</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2661</td>
+                    <td class="py-2 px-4 border-b">Mia Scott</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Lorem ipsum dolor</td>
+                    <td class="py-2 px-4 border-b">$200</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-yellow-100 text-yellow-800 text-xs font-semibold px-2.5 py-0.5 rounded">Pending</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2662</td>
+                    <td class="py-2 px-4 border-b">Noah Green</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Sed ut perspiciatis</td>
+                    <td class="py-2 px-4 border-b">$210</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="py-2 px-4 border-b text-blue-600">#2662</td>
+                    <td class="py-2 px-4 border-b">Noah Green</td>
+                    <td class="py-2 px-4 border-b text-blue-600">Sed ut perspiciatis</td>
+                    <td class="py-2 px-4 border-b">$210</td>
+                    <td class="py-2 px-4 border-b">
+                        <span class="bg-green-100 text-green-800 text-xs font-semibold px-2.5 py-0.5 rounded">Approved</span>
+                    </td>
+                </tr>
+                <tr>

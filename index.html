@@ -14,6 +14,22 @@
         .sidebar-hidden {
             transform: translateX(-100%);
         }
+        /* Dropdown styles */
+        .dropdown {
+            display: none;
+            position: absolute; /* Positioning the dropdown */
+            right: 0; /* Align to the right */
+            margin-top: 8px; /* Space between the profile and dropdown */
+            width: 200px; /* Set a width for the dropdown */
+            background-color: white; /* Background color */
+            border: 1px solid #e5e7eb; /* Border color */
+            border-radius: 0.375rem; /* Rounded corners */
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Shadow for dropdown */
+            z-index: 10; /* Ensure dropdown is above other elements */
+        }
+        .dropdown.open {
+            display: block;
+        }
     </style>
 </head>
 <body class="bg-gray-100">
@@ -26,12 +42,19 @@
         <div class="flex-1 ml-4">
             <input class="p-2 border rounded-md focus:outline-none w-full" placeholder="Search" type="text"/>
         </div>
-        <div class="flex items-center">
+        <div class="flex items-center relative">
             <i class="fas fa-bell text-gray-500 mx-2"></i>
             <i class="fas fa-envelope text-gray-500 mx-2"></i>
-            <div class="flex items-center ml-4">
-                <img alt="User  profile picture" class="rounded-full" height="30" src="https://placehold.co/30x30" width="30"/>
-                <span class="ml-2 text-gray-700">K. Anderson</span>
+            <div class="flex items-center ml-4 relative">
+                <img alt="User  profile picture" class="rounded-full cursor-pointer" height="30" src="https://placehold.co/30x30" width="30" id="profileToggle"/>
+                <span class="ml-2 text-gray-700 cursor-pointer" id="profileToggle">K. Anderson</span>
+                <div id="dropdown" class="dropdown">
+                    <ul class="py-2">
+                        <li><a href="profile.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Profile</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Settings</a></li>
+                        <li><a href="#" class="block px-4 py-2 text-gray-700 hover:bg-gray-200">Help</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
@@ -279,6 +302,21 @@
 
     sidebarToggle.addEventListener('click', () => {
         sidebar.classList.toggle('sidebar-hidden');
+    });
+
+    // Dropdown functionality
+    const profileToggle = document.getElementById('profileToggle');
+    const dropdown = document.getElementById('dropdown');
+
+    profileToggle.addEventListener('click', () => {
+        dropdown.classList.toggle('open');
+    });
+
+    // Close dropdown if clicked outside
+    window.addEventListener('click', (event) => {
+        if (!profileToggle.contains(event.target) && !dropdown.contains(event.target)) {
+            dropdown.classList.remove('open');
+        }
     });
 </script>
 </body>

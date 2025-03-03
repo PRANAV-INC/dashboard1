@@ -4,6 +4,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
     <title>Dashboard</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -42,9 +43,16 @@
         <div class="flex-1 ml-4">
             <input class="p-2 border rounded-md focus:outline-none w-full" placeholder="Search" type="text"/>
         </div>
-        <div class="flex items-center relative">
-            <i class="fas fa-bell text-gray-500 mx-2"></i>
-            <i class="fas fa-envelope text-gray-500 mx-2"></i>
+        <div class="right-section">
+            <div class="icons">
+                <i class="fas fa-bell" onclick="showNotifications()">
+                    <span class="badge">4</span>
+                </i>
+                <i class="fas fa-envelope" onclick="showMessages()">
+                    <span class="badge">3</span>
+                </i>
+            </div>
+
             <div class="flex items-center ml-4 relative">
                 <img alt="User  profile picture" class="rounded-full cursor-pointer" height="30" src="https://placehold.co/30x30" width="30" id="profileToggle"/>
                 <span class="ml-2 text-gray-700 cursor-pointer" id="profileToggle">K. Anderson</span>
@@ -208,6 +216,55 @@
         </div>
     </div>
 </div>
+
+<div>
+    <div>
+        <div class="container1">
+            <div class="header1">
+                <h2>Recent Transactions</h2>
+                <span>Latest Updates</span>
+            </div>
+            <div class="controls1">
+                <select id="entriesPerPage">
+                    <option value="5">5</option>
+                    <option value="10">10</option>
+                    <option value="15">15</option>
+                    <option value="all">All</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="Search...">
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Order #</th>
+                        <th>Customer</th>
+                        <th>Item</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr><td>#3012</td><td>Alice Green</td><td>Laptop Bag</td><td>$59</td><td><span class="status shipped">Shipped</span></td></tr>
+                    <tr><td>#3013</td><td>David Brown</td><td>Wireless Mouse</td><td>$29</td><td><span class="status processing">Processing</span></td></tr>
+                    <tr><td>#3014</td><td>Rachel Adams</td><td>Keyboard</td><td>$49</td><td><span class="status shipped">Shipped</span></td></tr>
+                    <tr><td>#3015</td><td>Tom White</td><td>Smartphone Case</td><td>$19</td><td><span class="status cancelled">Cancelled</span></td></tr>
+                    <tr><td>#3016</td><td>Linda Black</td><td>Headphones</td><td>$99</td><td><span class="status processing">Processing</span></td></tr>
+                </tbody>
+            </table>
+            <div class="footer1">Showing <span id="entriesCount">5</span> entries</div>
+        </div>
+    </div>
+</div>
+  
+<div class="container">
+    <h2 style="display: flex;justify-content: space-between;">
+    <a href="circle.html">BUDGET DISTRIBUTION</a>
+    <a href="new.html">DAILY NEWS </a>
+    </h2>
+
+</div>
+
+   
 <script>
     const ctx = document.getElementById('lineChart').getContext('2d');
     const lineChart = new Chart(ctx, {

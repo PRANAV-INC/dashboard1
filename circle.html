@@ -1,65 +1,103 @@
-<html>
+<html lang="en">
 <head>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budget Distribution</title>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            text-align: center;
+        }
+        .legend {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        .legend div {
+            display: flex;
+            align-items: center;
+            margin-right: 15px;
+        }
+        .legend div span {
+            display: inline-block;
+            width: 20px;
+            height: 10px;
+            margin-right: 5px;
+        }
+        .legend .rent span {
+            background-color: #ff6384;
+            border: 1px solid #ff6384;
+        }
+        .legend .groceries span {
+            background-color: #36a2eb;
+            border: 1px solid #36a2eb;
+        }
+        .legend .utilities span {
+            background-color: #ffce56;
+            border: 1px solid #ffce56;
+        }
+        .legend .entertainment span {
+            background-color: #4bc0c0;
+            border: 1px solid #4bc0c0;
+        }
+        .legend .savings span {
+            background-color: #9966ff;
+            border: 1px solid #9966ff;
+        }
+    </style>
 </head>
-<body class="flex items-center justify-center min-h-screen bg-gray-100">
-    <div class="bg-white p-4 rounded-lg shadow-md w-80">
-        <div class="flex items-center justify-between mb-4">
-            <h2 class="text-lg font-semibold text-blue-800">Website Traffic</h2>
-            <span class="text-sm text-gray-500">| Today</span>
-            <i class="fas fa-ellipsis-h text-gray-500"></i>
-        </div>
-        <div class="flex flex-col items-center">
-            <div class="flex items-center mb-4">
-                <div class="flex items-center mr-4">
-                    <div class="w-3 h-3 bg-gray-300 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-500">Search Engine</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-3 h-3 bg-gray-300 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-500">Direct</span>
-                </div>
-            </div>
-            <div class="flex items-center mb-4">
-                <div class="flex items-center mr-4">
-                    <div class="w-3 h-3 bg-yellow-400 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-500">Email</span>
-                </div>
-                <div class="flex items-center">
-                    <div class="w-3 h-3 bg-red-400 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-500">Union Ads</span>
-                </div>
-            </div>
-            <div class="flex items-center mb-4">
-                <div class="flex items-center">
-                    <div class="w-3 h-3 bg-blue-400 rounded-full mr-2"></div>
-                    <span class="text-sm text-gray-500">Video Ad</span>
-                </div>
-            </div>
-            <canvas id="trafficChart" class="w-40 h-40"></canvas>
+<body>
+    <div class="container">
+        <h2>Budget Distribution</h2>
+        <canvas id="budgetChart" width="400" height="400"></canvas>
+        <div class="legend">
+            <div class="rent"><span></span> Rent</div>
+            <div class="groceries"><span></span> Groceries</div>
+            <div class="utilities"><span></span> Utilities</div>
+            <div class="entertainment"><span></span> Entertainment</div>
+            <div class="savings"><span></span> Savings</div>
         </div>
     </div>
 
     <script>
-        const ctx = document.getElementById('trafficChart').getContext('2d');
-        const trafficChart = new Chart(ctx, {
-            type: 'doughnut',
+        const ctx = document.getElementById('budgetChart').getContext('2d');
+        const budgetChart = new Chart(ctx, {
+            type: 'pie',
             data: {
-                labels: ['Search Engine', 'Direct', 'Email', 'Union Ads', 'Video Ad'],
+                labels: ['Rent', 'Groceries', 'Utilities', 'Entertainment', 'Savings'],
                 datasets: [{
-                    data: [10, 10, 30, 20, 30],
-                    backgroundColor: ['#D1D5DB', '#D1D5DB', '#FBBF24', '#F87171', '#60A5FA'],
+                    data: [30, 20, 10, 15, 25],
+                    backgroundColor: [
+                        '#ff6384',
+                        '#36a2eb',
+                        '#ffce56',
+                        '#4bc0c0',
+                        '#9966ff'
+                    ],
+                    borderColor: [
+                        '#ff6384',
+                        '#36a2eb',
+                        '#ffce56',
+                        '#4bc0c0',
+                        '#9966ff'
+                    ],
                     borderWidth: 1
                 }]
             },
             options: {
                 responsive: true,
-                maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: false
+                        display: true,
+                        position: 'top',
                     }
                 }
             }

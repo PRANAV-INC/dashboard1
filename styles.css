@@ -1,0 +1,73 @@
+body container1{
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #eef2f7;
+}
+.container1 {
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.header1 {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.controls1 {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.controls1 select, .controls1 input {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+.status {
+    padding: 5px 10px;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 12px;
+}
+.status.shipped { background-color: #17a2b8; }
+.status.processing { background-color: #ff9800; color: #333; }
+.status.cancelled { background-color: #dc3545; }
+
+.header .right-section {
+    display: flex;
+    align-items: center;
+}
+.header .icons {
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+}
+.header .icons i {
+    margin-right: 20px;
+    position: relative;
+    cursor: pointer;
+}
+.header .icons i .badge {
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    background-color: #007bff;
+    color: #fff;
+    border-radius: 50%;
+    padding: 2px 5px;
+    font-size: 10px;
+}
